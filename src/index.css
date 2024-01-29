@@ -1,0 +1,71 @@
+body {
+  padding-top: 2rem;
+}
+
+.timer-container {
+  text-align: center;
+}
+
+#timer {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 100px auto;
+  background: #ffffff;
+  color: black;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 1px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+button {
+  font-size: 1em;
+  margin: 0 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.hero-body .container {
+  display: flex;
+  flex-direction: column;
+  align-items: top;
+  justify-content: center;
+}
+
+.subtitle.is-6 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  /* Stack hero title on smaller screens */
+  .hero-body .container {
+    text-align: center;
+  }
+  
+  /* Center timer and buttons on smaller screens */
+  .timer-container {
+    text-align: center;
+  }
+  
+  /* Adjust button spacing on smaller screens */
+  .buttons {
+    margin-top: 1rem;
+  }
+}
