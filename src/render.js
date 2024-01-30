@@ -17,10 +17,16 @@ async function startTimer() {
   document.getElementById('startBtn').disabled = true;
   document.getElementById('pauseBtn').disabled = false;
   document.getElementById('stopBtn').disabled = false;
+  document.querySelector('.heading').style.backgroundColor = 'green'
+  document.getElementById('dynamicText').textContent = 'Working...'
+  document.getElementById('dynamicText').style.color = 'white'
+  document.getElementById('dynamicText').style.fontWeight = 1000
+  document.getElementById('dynamicText').style.backgroundColor = 'white'
+
 
   timer = setInterval(() => {
     seconds++;
-    const formattedTime = moment(seconds);
+    const formattedTime = formatTime(seconds);
     document.getElementById('timer').innerText = formattedTime;
   }, 1000);
 
@@ -47,6 +53,13 @@ function pauseTimer() {
   document.getElementById('startBtn').disabled = false;
   document.getElementById('pauseBtn').disabled = true;
   document.getElementById('stopBtn').disabled = true;
+  document.getElementById('dynamicText').textContent = 'On Break'
+  document.querySelector('.heading').style.backgroundColor = 'yellow'
+  document.getElementById('dynamicText').style.color = 'white'
+  document.getElementById('dynamicText').style.fontWeight = 1000
+  document.getElementById('dynamicText').style.backgroundColor = 'white'
+
+
 
   clearInterval(timer);
   ipcRenderer.send('pause-timer');
@@ -69,6 +82,12 @@ async function stopTimer() {
     document.getElementById('pauseBtn').disabled = true;
     document.getElementById('stopBtn').disabled = true;
     document.getElementById('timer').textContent = '00:00:00';
+    document.getElementById('dynamicText').textContent = 'Stoped'
+    document.querySelector('.heading').style.backgroundColor = 'grey'
+    document.getElementById('dynamicText').style.color = 'white'
+    document.getElementById('dynamicText').style.fontWeight = 1000
+    document.getElementById('dynamicText').style.backgroundColor = 'white'
+
   
     const token = localStorage.getItem('token');
   
@@ -148,10 +167,16 @@ function updateUI(message) {
     }, 1000);
 }
 
-// function getCurrentTime() {
-//     const hours = currentTime.format('HH');
-//     const minutes = currentTime.format('mm');
-//     const seconds = currentTime.format('ss');
+function formatTime(totalSeconds) {
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
 
-//     return `${hours}:${minutes}:${seconds}`
-// }
+  return (
+    String(hours).padStart(2, '0') +
+    ':' +
+    String(minutes).padStart(2, '0') +
+    ':' +
+    String(seconds).padStart(2, '0')
+  );
+}

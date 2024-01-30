@@ -1,46 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Time Tracker</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="index.css" />
-  <script defer src="render.js"></script>
-</head>
-<body>
-  <div id="timer-alert" class="alert alert-primary" role="alert" style="display: none;"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Tracker App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://kit.fontawesome.com/d255df112c.js" crossorigin="anonymous"></script>
+    <script defer src="render.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row flex-nowrap">
+        <div class="col-auto col-md-2 col-xl-2 bg-dark">
+          <div class="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white min-vh-100">
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+              <li class="nav-item">
+                <a href="#" class="nav-link align-middle px-0">
+                  <i class="fa-solid fa-house"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link align-middle px-0">
+                  <i class="fa-solid fa-gauge-high"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link align-middle px-0">
+                  <i class="fa-solid fa-gear"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link align-middle px-0">
+                  <i class="fa-solid fa-question"></i>
+                </a>
+              </li>
+            </ul>
+            <hr>
+            <div class="dropdown pb-4">
+            </div>
+          </div>
+        </div>
+        <div class="col py-3">
+          <!-- Title and Dynamic Text Block -->
+          <div class="title-block heading">
+            <h1 class="mb-3 text-center">Time Tracker</h1>
+            <p id="dynamicText" class="text-muted"></p>
+          </div>
 
-  <!-- Hero Section -->
-  <section class="hero is-primary is-bold">
-    <div class="hero-body">
-      <div class="container" style="color: black;">
-        <h1 class="title" >⌚ Time Tracker ⏲️</h1>
-        <p class="subtitle">Manage your time from here</p>
-      </div>
-    </div>
-  </section>
+          <!-- Timer Section -->
+          <div class="timer-section text-center">
+            <div id="timer">00:00:00</div>
+          </div>
 
-  <!-- Timer Section -->
-  <section class="section">
-    <div class="container" style="color: black;">
-      <div class="timer-container">
-        <div id="timer">00:00:00</div>
-        <div class="buttons">
-          <button id="startBtn" onclick="startTimer()">Start</button>
-          <button id="pauseBtn" onclick="pauseTimer()" disabled>Pause</button>
-          <button id="stopBtn" onclick="stopTimer()" disabled>Stop</button>
+          <!-- Buttons Section -->
+          <div class="buttons-section text-center mt-4 mb-0 align-items-md-end">
+            <button id="startBtn" class="btn btn-success" onclick="startTimer()">Start</button>
+            <button id="pauseBtn" class="btn btn-warning" onclick="pauseTimer()" disabled>Pause</button>
+            <button id="stopBtn" class="btn btn-secondary" onclick="stopTimer()" disabled>Stop</button>
+          </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- My Product Section -->
-  <section class="section">
-    <div class="container" style="color: black;">
-      <p class="subtitle is-6 mt-3">A Ninja Tech Product</p>
-    </div>
-  </section>
-
-</body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>

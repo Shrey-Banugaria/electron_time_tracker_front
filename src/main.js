@@ -13,8 +13,8 @@ const createWindow = () => {
   const token = store.get('token');
 
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 600,
+    height: 400,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -24,7 +24,6 @@ const createWindow = () => {
   if (token) mainWindow.loadFile(path.join(__dirname, 'index.html'));
   else mainWindow.loadFile(path.join(__dirname, './public/login.html'));
 
-  mainWindow.webContents.openDevTools()
   mainWindow.on('closed', () => mainWindow = null); // for garbage collection
 };
 
