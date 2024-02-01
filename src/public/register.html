@@ -1,28 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Time Tracker</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../index.css" />
-        <script defer src="../render.js"></script>
-      </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Tracker Register</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../index.css" />
+  <script defer src="../render.js"></script>
+</head>
+<body>
 
-  <body>
-    <div class="container">
-        <h2>Register</h2>
-        <form id="registerForm">
-          <input type="email" id="email" placeholder="test@ninjatechnolabs.com" required>
-          <input type="password" id="password" placeholder="Password" required>
-          <input type="text" id="contactNumber" placeholder="Contact Number" required>
-          <button type="button" onclick="handleRegistration()">Register</button>
-        </form>
-        <p>Already have an account?  <a href="login.html">Login here</a></p>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center">Register</h2>
+            <form>
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="name@ninjatechnolabs.com" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" required>
+              </div>
+              <div class="form-group">
+                <label for="name">Contact Number</label>
+                <input type="text" class="form-control" id="contactNumber" placeholder="Contact No.">
+              </div>
+              <button type="submit" onclick="handleRegistration()" class="btn btn-success btn-block">Register</button>
+            </form>
+            <p>Already have an account?  <a href="login.html">Login here</a></p>
+          </div>
+        </div>
       </div>
-    
+    </div>
+  </div>
   <script>
-
     function handleRegistration() {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
@@ -37,5 +52,8 @@
         });
     }
   </script>
-  </body>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
