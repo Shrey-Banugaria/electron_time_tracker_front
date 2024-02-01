@@ -7,10 +7,10 @@ if (require('electron-squirrel-startup')) app.quit()
 
 const store = new Store();
 let mainWindow;
+const token = store.get('token');
 
 const createWindow = () => {
   const userDataPath = app.getPath('userData');
-  const token = store.get('token');
 
   mainWindow = new BrowserWindow({
     width: 600,
@@ -21,6 +21,8 @@ const createWindow = () => {
     },
   })
 
+  // store.delete('token');
+  // console.log('Token: ' + token)
   if (token) mainWindow.loadFile(path.join(__dirname, 'index.html'));
   else mainWindow.loadFile(path.join(__dirname, './public/login.html'));
 
@@ -51,11 +53,14 @@ ipcMain.on('stop-timer', (event, data) => {
 ipcMain.on('register', (event, data) => { console.log('register', data) });
 
 ipcMain.on('login', (event, data) => {
-  store.set('token', data.token);
   mainWindow.loadFile('index.html');
 })
 
 ipcMain.on('logout', () => {
   store.delete('token');
   mainWindow.loadFile('./public/login.html');
+})
+
+ipcMain.on('getToken', (event) => {
+  event.reply('sendToken', token);
 })

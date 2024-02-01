@@ -16,7 +16,7 @@
         <div class="card">
           <div class="card-body">
             <h2 class="card-title text-center">Register</h2>
-            <form>
+            <form onsubmit="event.preventDefault(); handleRegistration();">
               <div class="form-group">
                 <label for="email">Email address</label>
                 <input type="email" class="form-control" id="email" placeholder="name@ninjatechnolabs.com" required>
@@ -29,7 +29,7 @@
                 <label for="name">Contact Number</label>
                 <input type="text" class="form-control" id="contactNumber" placeholder="Contact No.">
               </div>
-              <button type="submit" onclick="handleRegistration()" class="btn btn-success btn-block">Register</button>
+              <button type="submit" class="btn btn-success btn-block">Register</button>
             </form>
             <p>Already have an account?  <a href="login.html">Login here</a></p>
           </div>
@@ -52,8 +52,5 @@
         });
     }
   </script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

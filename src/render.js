@@ -12,6 +12,12 @@ let isTimerRunning = false;
 let startTime;
 let totalBreakDuration = 0;
 let pauseStartTime;
+let token
+
+ipcRenderer.send('getToken');
+ipcRenderer.on('sendToken', (event, data) => {
+  token = data;
+});
 
 async function startTimer() {
   document.getElementById('startBtn').disabled = true;
@@ -30,7 +36,6 @@ async function startTimer() {
     document.getElementById('timer').innerText = formattedTime;
   }, 1000);
 
-  const token = localStorage.getItem('token');
   if (!token)  window.location.href = './public/login.html';
   else {
     if (!isTimerRunning) {
@@ -64,7 +69,6 @@ function pauseTimer() {
   clearInterval(timer);
   ipcRenderer.send('pause-timer');
 
-  const token = localStorage.getItem('token');
   if (!token)  window.location.href = './public/login.html'
   else {
     if (isTimerRunning) {
@@ -87,9 +91,6 @@ async function stopTimer() {
     document.getElementById('dynamicText').style.color = 'white'
     document.getElementById('dynamicText').style.fontWeight = 1000
     document.getElementById('dynamicText').style.backgroundColor = 'white'
-
-  
-    const token = localStorage.getItem('token');
   
     if (!token) window.location.href = './public/login.html';
     else {
@@ -136,7 +137,7 @@ async function registerUser(email, password, contactNumber) {
             contactNumber, // Assuming you want to include contactNumber in the registration
         });
         ipcRenderer.send('register', response.data);
-        window.location.href = './public/login.html';
+        window.location.href = './login.html';
     } catch (error) {
         console.error(error);
         ipcRenderer.send('register', error.message || 'Registration failed');
@@ -150,6 +151,7 @@ async function loginUser(email, password) {
             email,
             password,
         });
+        console.log(response);
         ipcRenderer.send('login', response.data);
         window.location.href = '../index.html'; 
     } catch (error) {
@@ -179,4 +181,9 @@ function formatTime(totalSeconds) {
     ':' +
     String(seconds).padStart(2, '0')
   );
+}
+
+function handleLogout() {
+  ipcRenderer.send('logout');
+  window.location.href = './public/login.html';
 }
